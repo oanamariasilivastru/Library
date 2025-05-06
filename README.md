@@ -110,53 +110,40 @@ Identify overdue loans by comparing DueDate to the current date
 Maintain an audit trail of returns with exact return timestamps
 
 
-Usage Overview
-Add Book
+## Usage Overview
 
-Enter Title, Author, Quantity (must be ≥ 1).
+1. **Add Book**  
+   - Enter **Title**, **Author**, **Quantity** (must be ≥ 1).
 
-List All Books
+2. **List All Books**  
+   - Shows **ID**, **Title**, **Author**, and stock for each book.
 
-Shows ID, Title, Author, and stock for each book.
+3. **Search Books**  
+   - Filter by any combination of:  
+     - **Book ID** (exact match)  
+     - **Title contains** (substring)  
+     - **Author contains** (substring)  
+     - **Min quantity**  
+     - **Max quantity**
 
-Search Books
+4. **Update Book**  
+   - Enter **Book ID**, then new **Title**/**Author**/**Quantity** or leave blank to keep the current value.
 
-Filter by any combination of:
+5. **Delete Book**  
+   - Enter **Book ID** to remove it.
 
-Book ID (exact match)
+6. **Lend Book**  
+   - Enter **Book ID**. Stock is decremented and a loan record is created.
 
-Title contains (substring)
+7. **Return Book**  
+   - Enter **Loan ID**. Stock is restored and the return date is recorded.
 
-Author contains (substring)
+8. **List Active Loans**  
+   - Shows loans not yet returned, with their due dates.
 
-Min quantity
+9. **List All Loans**  
+   - Shows full loan history, including return dates.
 
-Max quantity
+0. **Exit**  
+   - Closes the application.
 
-Update Book
-
-Enter Book ID, then new Title/Author/Quantity or leave blank to keep the current value.
-
-Delete Book
-
-Enter Book ID to remove it.
-
-Lend Book
-
-Enter Book ID. Stock is decremented and a loan record is created.
-
-Return Book
-
-Enter Loan ID. Stock is restored and the return date is recorded.
-
-List Active Loans
-
-Shows loans not yet returned, with their due dates.
-
-List All Loans
-
-Shows full loan history, including return dates.
-
-Exit
-
-Closes the application.
