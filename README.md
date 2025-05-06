@@ -74,3 +74,37 @@ You will see:
 0. Exit
 Type the number of the operation and press Enter, then follow the prompts.
 ```
+
+Point 7 Feature: Due‑Date & Return‑Date Tracking
+We extended the lending process to give you full visibility into when loans are due and returned:
+
+DateLent: timestamp when the book was checked out (DateTime.Now at lend time)
+
+DueDate: automatically set to DateLent.AddDays(14)
+
+DateReturned: recorded when you perform Return Book
+
+How it appears in the console
+Lend Book (option 6) displays:
+```csharp
+Lent at 2025-05-07, due 2025-05-21, Loan ID: 1
+```
+
+Return Book (option 7) displays:
+```csharp
+Book returned successfully.
+```
+List Active Loans (option 8) shows only unreturned loans:
+```csharp
+1 | The Hobbit lent 2025-05-07 due 2025-05-21
+```
+List All Loans (option 9) shows every loan record:
+```csharp
+1 | The Hobbit lent 2025-05-07 due 2025-05-21 returned 2025-05-15
+2 | 1984     lent 2025-05-08 due 2025-05-22
+```
+This feature lets you:
+
+Identify overdue loans by comparing DueDate to the current date
+
+Maintain an audit trail of returns with exact return timestamps
