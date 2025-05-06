@@ -23,7 +23,7 @@ Make sure your **LibraryConsole.csproj** includes the following packages:
   </PackageReference>
   <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 </ItemGroup>
-
+```
 These give you:
 
 EF Core SQLite provider
@@ -36,8 +36,6 @@ Build & Restore
 From the solution root folder run:
 
 bash
-Copiază
-Editează
 dotnet restore    # restore NuGet packages
 dotnet build      # compile the solution
 
