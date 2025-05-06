@@ -1,19 +1,20 @@
 # Library Console App – Run & Configuration Guide
 
-These instructions will help you configure and start the Library Console application. No additional database file is required—you can point the app at your existing SQLite database.
+This file contains detailed instructions for configuring, building, and running the Library Console application, and describes the “Point 7” functionality (due‑date & return‑date tracking) that was added.
 
 ---
 
 ## Prerequisites
 
 - **.NET 8 SDK** installed and on your PATH  
-- (Optional) an IDE such as Visual Studio, Rider, or VS Code  
+- (Optional) an IDE like Visual Studio, Rider, or VS Code  
+- (Optional) **SQLite CLI** if you want to inspect the SQLite database file  
 
 ---
 
 ## Project Dependencies
 
-Make sure your **LibraryConsole.csproj** includes the following packages:
+Ensure your `LibraryConsole.csproj` includes these package references:
 
 ```xml
 <ItemGroup>
@@ -24,28 +25,36 @@ Make sure your **LibraryConsole.csproj** includes the following packages:
   <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 </ItemGroup>
 ```
-These give you:
 
-EF Core SQLite provider
+Configuration
+By default, the application uses a local SQLite file named library.sqlite in its working directory. If you already have a database file or want to change its name/path, update the connection string:
 
-EF Core design tools (for migrations, if you choose to use them)
+Open LibraryConsole/Data/LibraryContext.cs
 
-Dependency injection support
+In the OnConfiguring method, locate:
+
+optionsBuilder.UseSqlite("Data Source=library.sqlite");
+
+Replace "library.sqlite" with your desired path or filename.
+Example:
+
+optionsBuilder.UseSqlite("Data Source=C:/data/my_library.db");
+
+Note: The application will create missing tables if they do not exist. You do not need to delete or recreate your existing database file unless you want a clean slate.
 
 Build & Restore
-From the solution root folder run:
+From the solution root, run:
 
-bash
-dotnet restore    # restore NuGet packages
-dotnet build      # compile the solution
+dotnet restore    # Restores NuGet packages
+dotnet build      # Compiles the solution
 
 Running the Application
-Start the console UI:
+To launch the console UI:
 
-bash
 dotnet run --project LibraryConsole
 
-You’ll see this menu:
+You will see:
+
 
 === Library Management ===
 1. Add Book
@@ -58,4 +67,5 @@ You’ll see this menu:
 8. List Active Loans
 9. List All Loans
 0. Exit
-Type the number of the operation and follow the prompts.
+Type the number of the operation and press Enter, then follow the prompts.
+
