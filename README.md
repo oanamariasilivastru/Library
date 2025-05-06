@@ -33,29 +33,34 @@ Open LibraryConsole/Data/LibraryContext.cs
 
 In the OnConfiguring method, locate:
 
+```csharp
+// In LibraryContext.cs
 optionsBuilder.UseSqlite("Data Source=library.sqlite");
+```
 
 Replace "library.sqlite" with your desired path or filename.
 Example:
-
+```csharp
 optionsBuilder.UseSqlite("Data Source=C:/data/my_library.db");
-
+```
 Note: The application will create missing tables if they do not exist. You do not need to delete or recreate your existing database file unless you want a clean slate.
 
 Build & Restore
 From the solution root, run:
-
-dotnet restore    # Restores NuGet packages
-dotnet build      # Compiles the solution
+```bash
+dotnet restore
+dotnet build
+dotnet run --project LibraryConsole
+```
 
 Running the Application
 To launch the console UI:
-
+```bash
 dotnet run --project LibraryConsole
-
+```
 You will see:
 
-
+```bash
 === Library Management ===
 1. Add Book
 2. List All Books
@@ -68,4 +73,4 @@ You will see:
 9. List All Loans
 0. Exit
 Type the number of the operation and press Enter, then follow the prompts.
-
+```
