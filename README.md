@@ -1,51 +1,55 @@
 # Library Console App – Run & Configuration Guide
 
-Follow these instructions to configure, build, and run the Library Console application. This will ensure you can exercise the full functionality, including the “Point 7” feature (due‑date & return‑date tracking).
+These instructions will help you configure and start the Library Console application. No additional database file is required—you can point the app at your existing SQLite database.
 
 ---
 
 ## Prerequisites
 
-- **.NET 8 SDK** (download and install from https://dotnet.microsoft.com/download)  
-- (Optional) **SQLite CLI** if you wish to inspect the database file directly  
+- **.NET 8 SDK** installed and on your PATH  
+- (Optional) an IDE such as Visual Studio, Rider, or VS Code  
 
 ---
 
-## Configuration
+## Project Dependencies
 
-By default, the application uses a local SQLite database file named `library.sqlite` in the working directory.
+Make sure your **LibraryConsole.csproj** includes the following packages:
 
-1. Open **LibraryConsole/Data/LibraryContext.cs**  
-2. In the `OnConfiguring` method, locate:
-   ```csharp
-   optionsBuilder.UseSqlite("Data Source=library.sqlite");
-If you want to change the filename or path, replace "library.sqlite" with your target path.
-Example:
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+    <PrivateAssets>all</PrivateAssets>
+  </PackageReference>
+  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+</ItemGroup>
 
-csharp
-Copiază
-Editează
-optionsBuilder.UseSqlite("Data Source=C:/data/my_library.db");
+These give you:
+
+EF Core SQLite provider
+
+EF Core design tools (for migrations, if you choose to use them)
+
+Dependency injection support
+
 Build & Restore
-From the repository root folder, run:
+From the solution root folder run:
 
 bash
 Copiază
 Editează
-dotnet restore    # restores NuGet packages
-dotnet build      # compiles the solution
+dotnet restore    # restore NuGet packages
+dotnet build      # compile the solution
+
 Running the Application
-Launch the console application with:
+Start the console UI:
 
 bash
-Copiază
-Editează
 dotnet run --project LibraryConsole
-You will see the main menu:
+
+You’ll see this menu:
 
 markdown
-Copiază
-Editează
 === Library Management ===
 1. Add Book
 2. List All Books
@@ -57,4 +61,4 @@ Editează
 8. List Active Loans
 9. List All Loans
 0. Exit
-Type the number for the desired operation and follow the prompts.
+Type the number of the operation and follow the prompts.
