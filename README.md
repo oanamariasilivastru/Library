@@ -47,7 +47,6 @@ dotnet run --project LibraryConsole
 
 You’ll see this menu:
 
-markdown
 === Library Management ===
 1. Add Book
 2. List All Books
