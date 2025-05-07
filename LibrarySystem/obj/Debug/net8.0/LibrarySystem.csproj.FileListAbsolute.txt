@@ -199,3 +199,4 @@ C:\Users\Oana\RiderProjects\LibrarySystem\LibrarySystem\bin\Debug\net8.0\runtime
 C:\Users\Oana\RiderProjects\LibrarySystem\LibrarySystem\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Oana\RiderProjects\LibrarySystem\LibrarySystem\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Oana\RiderProjects\LibrarySystem\LibrarySystem\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Oana\RiderProjects\LibrarySystem\LibrarySystem\obj\Debug\net8.0\LibrarySystem.sourcelink.json

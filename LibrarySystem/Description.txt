@@ -1,0 +1,124 @@
+﻿Library Console App – Run & Configuration Guide
+
+This file contains detailed instructions for configuring, building, and running the Library Console application, and describes the “Point 7” feature (due‑date & return‑date tracking) that was added.
+
+Prerequisites
+
+.NET 8 SDK must be installed and on your PATH
+
+(Optional) an IDE such as Visual Studio, Rider, or VS Code
+
+(Optional) SQLite CLI if you wish to inspect the database file
+
+Clone the Repository
+Open a terminal and run:
+git clone https://github.com/oanamariasilivastru/Library.git
+cd Library
+
+Project Dependencies
+Make sure the LibraryConsole.csproj file includes these package references:
+
+Microsoft.EntityFrameworkCore.Sqlite (version 8.0.0)
+
+Microsoft.EntityFrameworkCore.Design (version 8.0.0, PrivateAssets=all)
+
+Microsoft.Extensions.DependencyInjection (version 8.0.0)
+
+Configuration
+By default, the app uses a file named “library.sqlite” in its working directory. To point it at a different database file:
+a. Open LibraryConsole/Data/LibraryContext.cs
+b. Inside the OnConfiguring method find the line:
+optionsBuilder.UseSqlite("Data Source=library.sqlite");
+c. Replace library.sqlite with your path or filename, for example:
+optionsBuilder.UseSqlite("Data Source=C:/data/my_library.db");
+Note: the application will automatically create any missing tables; you do not need to delete or recreate your existing database file unless you want a fresh start.
+
+Build & Restore
+From the repository root run:
+dotnet restore (restores NuGet packages)
+dotnet build (compiles the solution)
+
+Running the Application
+You can start the console in two ways:
+a) From the command line:
+dotnet run --project LibraryConsole
+b) From your IDE (Rider, Visual Studio):
+• Open the solution (.sln) in your IDE
+• In Solution Explorer, right‑click the LibraryConsole project and choose “Set as Startup Project”
+• Click the Run (▶️) button
+The IDE will automatically restore, build, and launch the console for you.
+
+Once running, you will see this menu:
+=== Library Management ===
+
+Add Book
+
+List All Books
+
+Search Books
+
+Update Book
+
+Delete Book
+
+Lend Book
+
+Return Book
+
+List Active Loans
+
+List All Loans
+
+Exit
+
+Enter the number of the operation you wish to perform, then follow the prompts.
+
+Usage Overview
+
+Add Book
+• Enter Title, Author, Quantity (must be ≥ 1)
+
+List All Books
+• Shows ID, Title, Author, and stock for each book
+
+Search Books
+• Filter by any combination of Book ID (exact), Title contains, Author contains, Min quantity, Max quantity
+
+Update Book
+• Enter Book ID, then new Title/Author/Quantity or leave blank to keep the current value
+
+Delete Book
+• Enter Book ID to remove it
+
+Lend Book
+• Enter Book ID; stock is decremented and a loan record is created
+
+Return Book
+• Enter Loan ID; stock is restored and the return date recorded
+
+List Active Loans
+• Shows all loans not yet returned, with their due dates
+
+List All Loans
+• Shows full loan history, including return dates
+
+Exit
+• Closes the application
+
+Point 7 Feature – Due‑Date & Return‑Date Tracking
+We extended the lending process so that each loan records:
+• DateLent – timestamp when the book was checked out (set to current date/time)
+• DueDate – automatically set to 14 days after DateLent
+• DateReturned – recorded when you perform the Return Book operation
+
+In the console you will see:
+• When lending (option 6):
+“Lent at 2025-05-07, due 2025-05-21, Loan ID: 1”
+• When returning (option 7):
+“Book returned successfully.”
+• Listing active loans (option 8) shows lines like:
+“1 | The Hobbit lent 2025-05-07 due 2025-05-21”
+• Listing all loans (option 9) shows lines like:
+“1 | The Hobbit lent 2025-05-07 due 2025-05-21 returned 2025-05-15”
+
+Benefits: overdue detection, audit trail of returns, and clear due‑date visibility.
