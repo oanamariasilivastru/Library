@@ -11,7 +11,14 @@ This file contains detailed instructions for configuring, building, and running 
 - (Optional) **SQLite CLI** if you want to inspect the SQLite database file  
 
 ---
+## Clone the Repository
 
+To get started, clone your GitHub repo and enter its folder:
+
+```bash
+git clone https://github.com/oanamariasilivastru/Library.git
+cd Library
+```
 ## Project Dependencies
 
 Ensure your `LibraryConsole.csproj` includes these package references:
@@ -38,26 +45,22 @@ In the OnConfiguring method, locate:
 optionsBuilder.UseSqlite("Data Source=library.sqlite");
 ```
 
-Replace "library.sqlite" with your desired path or filename.
+If you have another database, replace "library.sqlite" with your desired path or filename.
 Example:
 ```csharp
 optionsBuilder.UseSqlite("Data Source=C:/data/my_library.db");
 ```
 Note: The application will create missing tables if they do not exist. You do not need to delete or recreate your existing database file unless you want a clean slate.
 
-Build & Restore
-From the solution root, run:
-```bash
-dotnet restore
-dotnet build
-dotnet run --project LibraryConsole
-```
+### From Your IDE (e.g. Rider, Visual Studio)
 
-Running the Application
-To launch the console UI:
-```bash
-dotnet run --project LibraryConsole
-```
+1. Open the solution (`.sln`) in your IDE.  
+2. In Solution Explorer, right‑click the **LibraryConsole** project and select **Set as Startup Project**.  
+3. Click the **Run** (▶️) button.
+
+Your IDE will automatically restore, build, and launch the console for you.  
+
+
 You will see:
 
 ```bash
