@@ -105,7 +105,7 @@ List All Loans
 Exit
 • Closes the application
 
-Point 7 Feature – Due‑Date & Return‑Date Tracking
+Point 7 Feature – Due‑Date & Return‑Date Tracking
 We extended the lending process so that each loan records:
 • DateLent – timestamp when the book was checked out (set to current date/time)
 • DueDate – automatically set to 14 days after DateLent
@@ -117,8 +117,8 @@ In the console you will see:
 • When returning (option 7):
 “Book returned successfully.”
 • Listing active loans (option 8) shows lines like:
-“1 | The Hobbit lent 2025-05-07 due 2025-05-21”
+“1 | The Hobbit lent 2025-05-07 due 2025-05-21”
 • Listing all loans (option 9) shows lines like:
-“1 | The Hobbit lent 2025-05-07 due 2025-05-21 returned 2025-05-15”
+“1 | The Hobbit lent 2025-05-07 due 2025-05-21 returned 2025-05-15”
 
 Benefits: overdue detection, audit trail of returns, and clear due‑date visibility.
