@@ -54,12 +54,13 @@ Note: The application will create missing tables if they do not exist. You do no
 
 ### From Your IDE (e.g. Rider, Visual Studio)
 
+If your IDE automatically detects configuration, just click the **Run** (▶️) button.
+
 1. Open the solution (`.sln`) in your IDE.  
-2. In Solution Explorer, right‑click the **LibraryConsole** project and select **Set as Startup Project**.  
+2. In Solution Explorer, right‑click the **LibrarySystem** project and select **Set as Startup Project**.  
 3. Click the **Run** (▶️) button.
 
 Your IDE will automatically restore, build, and launch the console for you.  
-
 
 You will see:
 
