@@ -21,7 +21,7 @@ cd Library
 ```
 ## Project Dependencies
 
-Ensure your `LibraryConsole.csproj` includes these package references:
+Ensure your `LibrarySistem.csproj` includes these package references:
 
 ```xml
 <ItemGroup>
